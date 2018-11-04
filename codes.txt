@@ -1,0 +1,74 @@
+def partition(x):
+    if x < 3:
+        return 'positive'
+    return 'negative'
+
+column = cv['column']
+t = column.map(partition)
+df["new_column"]=t
+
+--------------------------------------------------
+# remove duplicates from specific columns
+
+df = df.drop_duplicates(subset={"column1","column2","column3","column4"})
+--------------------------------------------------
+# is all values in particuler column is uqique or not?
+df['column].is_unique
+# True / False
+--------------------------------------------------
+# df slicing
+# in <column> from 1905 to 1906
+df.loc[1905:, 'column'].head(10)
+--------------------------------------------------
+# column to numeric
+df['column'] = pd.to_numeric(df['column'])
+-------------------------------------------------
+>>> pub = df['column']
+>>> london = pub.str.contains('London')
+>>> london[:5]
+Identifier
+206    True
+216    True
+218    True
+472    True
+480    True
+Name: Place of Publication, dtype: bool
+
+>>> oxford = pub.str.contains('Oxford')
+df['column'] = np.where(london, 'London',
+                                      np.where(oxford, 'Oxford',
+                                               pub.str.replace('-', ' ')))
+
+>>> df['column'].head()
+Identifier
+206    London
+216    London
+218    London
+472    London
+480    London
+Name: Place of Publication, dtype: object
+---------------------------------------------------
+# rename one column name among all columns
+df.rename(columns = {'column_x' : 'column_y'}, inplace=True)
+# rename more than one columns names amont all columns
+new_names = {'1' : 'column_1', '5' : 'column_5'}
+df.reanem(column = new_names, inplace = True)
+--------------------------------------------------
+# Dropping rows having NULL Values
+df.dropna(inplace=True)
+--------------------------------------------------
+df = pd.read_csv("file.csv", encoding = "ISO-8859-1", error_bad_lines=False)
+--------------------------------------------------
+# all columns and qty of null values in each column
+df.isnull().sum()
+--------------------------------------------------
+# variables Qty that contain null values 
+df.isnull().sum().sum()
+--------------------------------------------------
+# unique items Qty.
+df.column.nunique()
+-------------------------------------------------
+# get grops sizes
+df.groupby('column').size().reset_index(name='Enter new name for column')
+-------------------------------------------------
+
