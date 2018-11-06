@@ -70,6 +70,8 @@ df.column.nunique()
 -------------------------------------------------
 # get grops sizes
 df.groupby('column').size().reset_index(name='Enter new name for column')
+# another 
+df.groupby('column').count()
 -------------------------------------------------
 # entire column to lower case
 df['column'] = df['column'].str.lower()
@@ -80,4 +82,6 @@ df[column] = df[column].apply(lambda i: re.sub(r"http\S+", "", i))
 -------------------------------------------------
 # all null values from all variables 
 df.isnull().sum()
+-------------------------------------------------
+
 -------------------------------------------------
