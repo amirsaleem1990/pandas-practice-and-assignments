@@ -140,7 +140,9 @@ type(new)
 count_train.shape == new.shape
 # True
 -------------------------------------------------
-
+# check 2 dataframes are equal or not
+df1.equals(df2)
+# True / False
 -------------------------------------------------
 
 -------------------------------------------------
