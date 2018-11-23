@@ -130,7 +130,13 @@ pd.concat([df1, df2, df3, df4])
 df.groupby('A').sum()
 df.groupby('A').count()
 -------------------------------------------------
+scipy.sparse.csr_matrix to nd.array
 
+type(count_train)
+# scipy.sparse.csr.csr_matrix
+new = count_train.A
+type(new)
+# numpy.ndarray
 -------------------------------------------------
 
 -------------------------------------------------
