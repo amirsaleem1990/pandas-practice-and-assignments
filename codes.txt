@@ -137,6 +137,8 @@ type(count_train)
 new = count_train.A
 type(new)
 # numpy.ndarray
+count_train.shape == new.shape
+# True
 -------------------------------------------------
 
 -------------------------------------------------
