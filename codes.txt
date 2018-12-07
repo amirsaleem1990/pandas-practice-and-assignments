@@ -1,12 +1,20 @@
+# perform a function on one column among all columns
 def partition(x):
     if x < 3:
         return 'positive'
     return 'negative'
 
-column = cv['column']
+column = df['column']
 t = column.map(partition)
 df["new_column"]=t
 
+# another way:
+
+def func(text):
+    return text.lower()
+df["reviews"] = df["reviews"].apply(func)
+
+# <reviews> ki har value is function me jay gi or return aay gi, sab complete ho jay gi to output list of these returns df['reviews'] ko assign ho jay gi
 --------------------------------------------------
 # remove duplicates from specific columns
 
@@ -186,11 +194,18 @@ df['column'].str.extractall(r'((\d?\d):(\d\d) ?([ap]m))')
 df['column'].str.extractall(r'(?P<time>(?P<hour>\d?\d):(?P<minute>\d\d) ?(?P<period>[ap]m))')
 # since we use <extarctall> we exctact all times, even if 1 text contains more than 1 time
 ------------------------------------------------- 
-
+# count plot group by sepecific column
+# <df> k <column> ki grouping kar k un ka count ly lo os phir us counting ka <'bar'> graph bana do
+df.column.value_counts().plot(kind='bar')
 -------------------------------------------------
-
+# pandas itrate over the rows
+for i in df.iterrows():
+    # now i is tuple, contains 2 values, first is index of this row, 
+    # and second is a pandas Series, contain a content of this row.
+    print(i, len(i), type(i), leni([0]), len(i[1]), type(i[0]), type(i[1]))
 -------------------------------------------------
-
+2 equal lenth lists to dataframe in single line
+df = pd.DataFrame(data=list(zip(list1, list2)), columns=['column1', 'column2'])
 -------------------------------------------------
 
 -------------------------------------------------
